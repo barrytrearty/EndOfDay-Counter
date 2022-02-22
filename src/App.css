@@ -1,0 +1,46 @@
+.app {
+  width: 80%;
+  margin: auto;
+}
+
+body {
+  background-color: #0b0914;
+  color: aliceblue;
+}
+
+h1 {
+  text-align: center;
+}
+
+td {
+  padding-bottom: 5px;
+}
+
+input {
+  color: white;
+  border: none;
+  font-weight: 700;
+  text-align: center;
+  height: 100%;
+  margin: 0;
+}
+
+.pos-input {
+  background-color: #08662c;
+}
+
+.neg-input {
+  background-color: #661e08;
+}
+
+/* .amount {
+  background-color: #200b7c;
+} */
+
+.total {
+  background-color: 082366;
+}
+
+/* input {
+  width: 20vw;
+} */
