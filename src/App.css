@@ -34,3 +34,39 @@ input {
 .neg-input {
   background-color: #661e08;
 }
+
+.card {
+  /* height: 40px; */
+  width: 50px;
+}
+
+.notes {
+  width: 40px;
+  height: 20px;
+  object-fit: cover;
+}
+
+.coins {
+  height: 20px;
+}
+
+@media (min-width: 600px) {
+  .card {
+    height: auto;
+    width: 120px;
+  }
+
+  .notes {
+    height: auto;
+    width: 120px;
+  }
+
+  .coins {
+    height: auto;
+    width: 60px;
+  }
+
+  .amount {
+    font-size: 1.5rem;
+  }
+}
