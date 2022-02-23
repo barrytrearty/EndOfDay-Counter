@@ -51,7 +51,7 @@ function App() {
     Number(musicAmount) +
     Number(otherAmount);
 
-  const profit = total - Number(floatAmount);
+  const profit = total - floatAmount;
 
   return (
     <div>
@@ -224,7 +224,7 @@ function App() {
               onChange={(e) => setFloatAmount(e.target.value)}
             ></input>
           </td>
-          <td className="total">{floatAmount.toFixed(2)}</td>
+          <td className="total">{floatAmount}</td>
         </tr>
         <tr className="row">
           <td className="amount">Profit</td>
