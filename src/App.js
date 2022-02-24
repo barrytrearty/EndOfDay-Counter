@@ -12,6 +12,8 @@ import fiftyCent from "./data/fiftyCent.PNG";
 import twentyCent from "./data/twentyCent.PNG";
 import tenCent from "./data/tenCent.PNG";
 
+import emailjs from "@emailjs/browser";
+
 function App() {
   const [a50EuroInput, set50EuroInput] = useState("");
   const [a20EuroInput, set20EuroInput] = useState("");
@@ -52,6 +54,61 @@ function App() {
     Number(otherAmount);
 
   const profit = total - floatAmount;
+
+  const report = ` CC: ${aCCAmount}, --------
+    €50: ${a50EuroAmount},--------
+    €20: ${a20EuroAmount},--------
+    €10: ${a10EuroAmount},--------
+    €5:  ${a5EuroAmount},--------
+    €2:  ${a2EuroAmount},--------
+    €1:  ${a1EuroAmount},--------
+    50c:  ${a50CentsAmount},--------
+    20c:  ${a20CentsAmount},--------
+    10c:  ${a10CentsAmount},--------
+    music: ${musicAmount},--------
+    other: ${otherAmount},--------
+    total: ${total},--------
+    float: ${floatAmount},--------
+    profit:${profit},`;
+
+  const emailObj = {
+    subject: "End of Day Report",
+    email: "btrearty@gmail.com",
+    name: "barry",
+    message: report,
+  };
+
+  const showSend = () => {
+    document.getElementById("complete-button").style.display = "none";
+    document.getElementById("send-button").style.display = "block";
+  };
+
+  const reportSent = () => {
+    document.getElementById("send-button").style.display = "none";
+    document.getElementById("report-sent").style.display = "block";
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_kjfucba", //"YOUR_SERVICE_ID"
+        "template_ve3775q", //YOUR_TEMPLATE_ID
+        emailObj,
+        "user_VAUL09ZX0AO6lYFPP4VbA"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+
+    reportSent();
+  };
 
   return (
     <div>
@@ -230,6 +287,29 @@ function App() {
           <td className="amount">Profit</td>
           <td>{/* <input type="number" className="pos-input"></input> */}</td>
           <td className="total">{profit.toFixed(2)}</td>
+        </tr>
+        <tr className="row">
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr className="row">
+          <td></td>
+          <td className="amount">
+            <button onClick={() => showSend()} id="complete-button">
+              Report Complete
+            </button>
+            <button onClick={sendEmail} id="send-button">
+              Send Report
+            </button>
+            <span id="report-sent">Report Sent</span>
+          </td>
+          <td></td>
+        </tr>
+        <tr className="row">
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
       </table>
     </div>

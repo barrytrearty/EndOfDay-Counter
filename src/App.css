@@ -1,5 +1,5 @@
 .app {
-  width: 80%;
+  width: 90%;
   margin: auto;
 }
 
@@ -35,6 +35,16 @@ input {
   background-color: #661e08;
 }
 
+.email.col {
+  text-align: left;
+  padding: 0;
+}
+
+.email-input {
+  width: 80%;
+  background-color: #160866;
+}
+
 .card {
   /* height: 40px; */
   width: 50px;
@@ -50,7 +60,39 @@ input {
   height: 20px;
 }
 
+button {
+  cursor: pointer;
+  color: rgb(35, 49, 34);
+  border: 0px;
+  padding: 5px;
+  outline: none;
+  font-weight: 600;
+  margin: auto;
+  box-shadow: 2px 3px rgb(255, 255, 255);
+}
+
+button:active {
+  box-shadow: -2px -3px white;
+}
+
+#complete-button {
+  background-color: #17aa72;
+}
+
+#send-button {
+  background-color: #175caa;
+  display: none;
+}
+
+#report-sent {
+  display: none;
+}
+
 @media (min-width: 600px) {
+  body {
+    font-size: 1.5rem;
+  }
+
   .card {
     height: auto;
     width: 120px;
