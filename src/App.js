@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import creditCard from "./data/credit-icon.png";
 import fiftyEuro from "./data/fiftyEuro.PNG";
 import twentyEuro from "./data/twentyEuro.PNG";
@@ -78,14 +78,18 @@ function App() {
     message: report,
   };
 
+  const completeButton = useRef();
+  const sendButton = useRef();
+  const reportSentMessage = useRef();
+
   const showSend = () => {
-    document.getElementById("complete-button").style.display = "none";
-    document.getElementById("send-button").style.display = "block";
+    completeButton.current.style.display = "none";
+    sendButton.current.style.display = "block";
   };
 
   const reportSent = () => {
-    document.getElementById("send-button").style.display = "none";
-    document.getElementById("report-sent").style.display = "block";
+    sendButton.current.style.display = "none";
+    reportSentMessage.current.style.display = "block";
   };
 
   const sendEmail = (e) => {
@@ -109,6 +113,11 @@ function App() {
 
     reportSent();
   };
+
+  useEffect(() => {
+    sendButton.current.display = "none";
+    reportSentMessage.current.display = "none";
+  });
 
   return (
     <div>
@@ -296,13 +305,19 @@ function App() {
         <tr className="row">
           <td></td>
           <td className="amount">
-            <button onClick={() => showSend()} id="complete-button">
+            <button
+              onClick={() => showSend()}
+              id="complete-button"
+              ref={completeButton}
+            >
               Report Complete
             </button>
-            <button onClick={sendEmail} id="send-button">
+            <button onClick={sendEmail} id="send-button" ref={sendButton}>
               Send Report
             </button>
-            <span id="report-sent">Report Sent</span>
+            <span id="report-sent" ref={reportSentMessage}>
+              Report Sent
+            </span>
           </td>
           <td></td>
         </tr>
