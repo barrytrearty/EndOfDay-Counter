@@ -82,16 +82,6 @@ function App() {
   const sendButton = useRef();
   const reportSentMessage = useRef();
 
-  const showSend = () => {
-    completeButton.current.style.display = "none";
-    sendButton.current.style.display = "block";
-  };
-
-  const reportSent = () => {
-    sendButton.current.style.display = "none";
-    reportSentMessage.current.style.display = "block";
-  };
-
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -114,9 +104,19 @@ function App() {
     reportSent();
   };
 
+  const showSend = () => {
+    completeButton.current.style.display = "none";
+    sendButton.current.style.display = "block";
+  };
+
+  const reportSent = () => {
+    sendButton.current.style.display = "none";
+    reportSentMessage.current.style.display = "block";
+  };
+
   useEffect(() => {
-    sendButton.current.display = "none";
-    reportSentMessage.current.display = "none";
+    sendButton.current.style.display = "none";
+    reportSentMessage.current.style.display = "none";
   });
 
   return (
